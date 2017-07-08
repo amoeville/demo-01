@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>五角星评分案例</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            cursor: pointer;
+        }
+
+        .comment {
+            font-size: 100px;
+            color: blue;
+        }
+
+        .comment li {
+            float: left;
+        }
+
+        ul {
+            list-style: none;
+        }
+    </style>
+
+</head>
+
+<body>
+    <ul class="comment">
+        <li>☆</li>
+        <li>☆</li>
+        <li>☆</li>
+        <li>☆</li>
+        <li>☆</li>
+    </ul>
+</body>
+<script src="jquery-1.11.1.js"></script>
+<script>
+    $(function () {
+        //获取所有的li绑定鼠标进入和鼠标离开和点击事件
+        $(".comment>li").mouseover(function () {
+            $(this).text("★").prevAll("li").text("★").end().nextAll("li").text("☆");
+        }).mouseout(function () {
+            $(this).text("☆").prevAll("li").text("☆");
+            //获取属性index为10的这个li和这个li前面所有的li
+            $(".comment>li[index=10]").text("★").prevAll("li").text("★");
+
+        }).click(function () {
+            $(this).attr("index", "10").siblings("li").removeAttr("index");
+        });
+    });
+</script>
+
+</html>
